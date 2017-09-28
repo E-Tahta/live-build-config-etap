@@ -156,22 +156,22 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 # export LIVE_BUILD=/srv/cdimage.pardus.org/live/live-build
 
 # Or we ensure we have proper version installed
-ver_live_build=$(dpkg-query -f '${Version}' -W live-build)
-if dpkg --compare-versions "$ver_live_build" lt 1:20151215pardus1; then
-	echo "ERROR: You need live-build (>= 1:20151215pardus1), you have $ver_live_build" >&2
-	exit 1
-fi
-if ! echo "$ver_live_build" | grep -q pardus; then
-	echo "ERROR: You need a Pardus patched live-build. Your current version: $ver_live_build" >&2
-	exit 1
-fi
+#ver_live_build=$(dpkg-query -f '${Version}' -W live-build)
+#if dpkg --compare-versions "$ver_live_build" lt 1:20151215pardus1; then
+#	echo "ERROR: You need live-build (>= 1:20151215pardus1), you have $ver_live_build" >&2
+#	exit 1
+#fi
+#if ! echo "$ver_live_build" | grep -q pardus; then
+#	echo "ERROR: You need a Pardus patched live-build. Your current version: $ver_live_build" >&2
+#	exit 1
+#fi
 
 # Check we have a good debootstrap
-ver_debootstrap=$(dpkg-query -f '${Version}' -W debootstrap)
-if ! echo "$ver_debootstrap" | grep -q pardus; then
-	echo "ERROR: You need a Pardus patched debootstrap. Your current version: $ver_debootstrap" >&2
-	exit 1
-fi
+#ver_debootstrap=$(dpkg-query -f '${Version}' -W debootstrap)
+#if ! echo "$ver_debootstrap" | grep -q pardus; then
+#	echo "ERROR: You need a Pardus patched debootstrap. Your current version: $ver_debootstrap" >&2
+#	exit 1
+#fi
 
 # We need root rights at some point
 if [ "$(whoami)" != "root" ]; then
