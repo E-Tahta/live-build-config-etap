@@ -167,11 +167,11 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 #fi
 
 # Check we have a good debootstrap
-#ver_debootstrap=$(dpkg-query -f '${Version}' -W debootstrap)
-#if ! echo "$ver_debootstrap" | grep -q pardus; then
-#	echo "ERROR: You need a Pardus patched debootstrap. Your current version: $ver_debootstrap" >&2
-#	exit 1
-#fi
+ver_debootstrap=$(dpkg-query -f '${Version}' -W debootstrap)
+if ! echo "$ver_debootstrap" | grep -q pardus; then
+	echo "ERROR: You need a Pardus patched debootstrap. Your current version: $ver_debootstrap" >&2
+	exit 1
+fi
 
 # We need root rights at some point
 if [ "$(whoami)" != "root" ]; then
