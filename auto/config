@@ -19,7 +19,7 @@ public_pardussec_mirror=http://depo.pardus.org.tr/pardus-yenikusak
 # Detect target architecture and filter args
 temp=""
 arch=$(dpkg --print-architecture)
-dist="onyedi"
+dist="etap"
 lb_opts=""
 while [ $# -gt 0 ]; do
    	arg="$1"
@@ -73,10 +73,10 @@ fi
 # Define options that vary across architectures
 case "$arch" in
     amd64)
-	lb_opts="$lb_opts --debian-installer live"
+	lb_opts="$lb_opts live"
     ;;
     i386)
-	lb_opts="$lb_opts --debian-installer live --linux-flavours 686-pae"
+	lb_opts="$lb_opts live --linux-flavours 686-pae"
     ;;
     armel|armhf)
 	lb_opts="$lb_opts --binary-images hdd --binary-filesystem ext4 --chroot-filesystem none"
@@ -113,15 +113,14 @@ cp -rT pardus-config/common config
 
 if [ -n "$enable_pu" ]; then
 	mkdir -p config/archives
-	echo "deb $pardus_mirror $dist-proposed-updates main contrib non-free" \
+	echo "deb $pardus_mirror $dist main contrib non-free" \
 		> config/archives/pardus-proposed-updates.list.chroot
-	echo "deb $public_pardus_mirror $dist-proposed-updates main contrib non-free" \
+	echo "deb $public_pardus_mirror $dist main contrib non-free" \
 		> config/archives/pardus-proposed-updates.list.binary
 fi
 
 lb config noauto \
 	--distribution "$dist" \
-	--debian-installer-distribution "$dist" \
 	--archive-areas "main contrib non-free" \
 	--debootstrap-options "--keyring=/usr/share/keyrings/pardus-archive-keyring.gpg" \
 	--keyring-packages pardus-archive-keyring \
