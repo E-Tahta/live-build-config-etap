@@ -111,14 +111,6 @@ cp -rT pardus-config/common config
 [ ! -d pardus-config/release-$dist ] || cp -rTL pardus-config/release-$dist config
 [ ! -d pardus-config/variant-$variant ] || cp -rTL pardus-config/variant-$variant config
 
-if [ -n "$enable_pu" ]; then
-	mkdir -p config/archives
-	echo "deb $pardus_mirror $dist main contrib non-free" \
-		> config/archives/pardus-proposed-updates.list.chroot
-	echo "deb $public_pardus_mirror $dist main contrib non-free" \
-		> config/archives/pardus-proposed-updates.list.binary
-fi
-
 lb config noauto \
 	--distribution "$dist" \
   --debian-installer-distribution "$dist" \
