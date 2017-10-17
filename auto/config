@@ -73,10 +73,10 @@ fi
 # Define options that vary across architectures
 case "$arch" in
     amd64)
-	lb_opts="$lb_opts live"
+	lb_opts="$lb_opts --debian-installer live"
     ;;
     i386)
-	lb_opts="$lb_opts live --linux-flavours 686-pae"
+	lb_opts="$lb_opts --debian-installer live --linux-flavours 686-pae"
     ;;
     armel|armhf)
 	lb_opts="$lb_opts --binary-images hdd --binary-filesystem ext4 --chroot-filesystem none"
@@ -88,7 +88,7 @@ esac
 
 # Define options that vary across releases
 case "$dist" in
-    onyedi)
+    etap)
 	lb_opts="$lb_opts --mirror-chroot-security $pardussec_mirror"
 	lb_opts="$lb_opts --mirror-binary-security $public_pardussec_mirror"
     ;;
@@ -121,6 +121,7 @@ fi
 
 lb config noauto \
 	--distribution "$dist" \
+  --debian-installer-distribution "$dist" \
 	--archive-areas "main contrib non-free" \
 	--debootstrap-options "--keyring=/usr/share/keyrings/pardus-archive-keyring.gpg" \
 	--keyring-packages pardus-archive-keyring \
