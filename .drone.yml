@@ -7,4 +7,4 @@ build:
   commands:
     - apt-get update
     - apt-get install curl live-build
-    - ./build.sh --distribution etap --variant etap --verbose
+    - ./build.sh --distribution stable --variant etap --verbose
