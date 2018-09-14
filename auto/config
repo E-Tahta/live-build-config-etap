@@ -71,20 +71,20 @@ if [ ! -e ${LIVE_BUILD:-/usr/share/live/build}/data/debian-cd/$dist ]; then
 fi
 
 # Define options that vary across architectures
-case "$arch" in
-    amd64)
-	lb_opts="$lb_opts --debian-installer live"
-    ;;
-    i386)
-	lb_opts="$lb_opts --debian-installer live --linux-flavours 686-pae"
-    ;;
-    armel|armhf)
-	lb_opts="$lb_opts --binary-images hdd --binary-filesystem ext4 --chroot-filesystem none"
-    ;;
-    *)
-	echo "WARNING: configuration not tested on arch $arch" >&2
-    ;;
-esac
+#case "$arch" in
+#    amd64)
+#	lb_opts="$lb_opts --debian-installer live"
+#    ;;
+#    i386)
+#	lb_opts="$lb_opts --debian-installer live --linux-flavours 686-pae"
+#    ;;
+#    armel|armhf)
+#	lb_opts="$lb_opts --binary-images hdd --binary-filesystem ext4 --chroot-filesystem none"
+#    ;;
+#    *)
+#	echo "WARNING: configuration not tested on arch $arch" >&2
+#    ;;
+#esac
 
 # Define options that vary across releases
 case "$dist" in
@@ -113,7 +113,6 @@ cp -rT pardus-config/common config
 
 lb config noauto \
 	--distribution "$dist" \
-  --debian-installer-distribution "$dist" \
 	--archive-areas "main contrib non-free" \
 	--debootstrap-options "--keyring=/usr/share/keyrings/pardus-archive-keyring.gpg" \
 	--keyring-packages pardus-archive-keyring \
@@ -123,7 +122,6 @@ lb config noauto \
 	--firmware-binary true \
 	--firmware-chroot true \
 	--mirror-bootstrap "$pardus_mirror" \
-	--mirror-debian-installer "$pardus_mirror" \
 	--mirror-binary "$public_pardus_mirror" \
 	--iso-application "Pardus" \
 	--iso-publisher "Pardus" \
