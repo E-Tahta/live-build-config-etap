@@ -1,2 +1,6 @@
 console-setup
 eta-desktop
+efibootmgr
+grub2-common
+grub-efi
+grub-efi-amd64
