@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# use original kdmrc for autologin live user
+if [ -f /etc/kde4/kdm/kdmrc.orig ]; then
+    mv /etc/kde4/kdm/kdmrc.orig /etc/kde4/kdm/kdmrc
+fi
