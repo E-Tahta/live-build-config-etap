@@ -57,8 +57,8 @@ target_image_name() {
 	if [ "$IMAGE_EXT" = "$IMAGE_NAME" ]; then
 		IMAGE_EXT="img"
 	fi
-	if [ "$PARDUS_VARIANT" = "default" ]; then
-		echo "${TARGET_SUBDIR:+$TARGET_SUBDIR/}Pardus-$PARDUS_VERSION-$PARDUS_ARCH-$TIMESTAMP$scm_v.$IMAGE_EXT"
+	if [ "$PARDUS_VARIANT" = "etap" ]; then
+		echo "${TARGET_SUBDIR:+$TARGET_SUBDIR/}Pardus-ETAP-$PARDUS_VERSION-$PARDUS_ARCH-$TIMESTAMP$scm_v.$IMAGE_EXT"
 	else
 		echo "${TARGET_SUBDIR:+$TARGET_SUBDIR/}Pardus-$PARDUS_VARIANT-$PARDUS_VERSION-$PARDUS_ARCH-$TIMESTAMP$scm_v.$IMAGE_EXT"
 	fi
