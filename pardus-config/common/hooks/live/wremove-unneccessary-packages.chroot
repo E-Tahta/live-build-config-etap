@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+
+echo "Removing unnecessary packages"
+
+apt-get update
+apt-get purge -y aptitude mutt exim4-base reportbug
+apt-get autoremove -y
+apt-get clean -y

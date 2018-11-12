@@ -2,10 +2,9 @@
 
 set -e
 
+echo "Adding architecture i386"
 dpkg --add-architecture i386
 
-#echo "deb http://depo.pardus.org.tr/etap stable main contrib non-free" > /etc/apt/sources.list
-#echo "deb http://depo.pardus.org.tr/etap-guvenlik stable main contrib non-free" >> /etc/apt/sources.list
-
+echo "Installing winehq-stable"
 apt-get update
 apt-get install winehq-stable -y
